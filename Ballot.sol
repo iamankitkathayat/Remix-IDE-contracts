@@ -15,4 +15,10 @@ contract Ballot {
     }
 
 
+    address public chairPerson;
+
+    mapping(address => Voter) public voters;
+
+    Proposal[] public proposals;
+    
 }
