@@ -9,6 +9,10 @@ contract Ballot {
         uint vote;
     }
     
+    struct Proposal {
+        bytes32 name;
+        uint voteCount;
+    }
 
 
 }
