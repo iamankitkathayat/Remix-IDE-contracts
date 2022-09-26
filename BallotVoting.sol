@@ -23,7 +23,14 @@ contract Ballot {
     
     constructor(bytes32[] memory proposalNames) {
         chairPerson = msg.sender;
-        
+        voter[chairPerson].wegith = 1;
+
+        for(uint i=0; i< proposalNames.length; i++) {
+            proposals.push(Proposal({
+                name : proposalNames[i],
+                voteCount : 0
+            }));
+        }
     }
     
 }
