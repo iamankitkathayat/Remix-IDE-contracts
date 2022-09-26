@@ -21,4 +21,9 @@ contract Ballot {
 
     Proposal[] public proposals;
     
+    constructor(bytes32[] memory proposalNames) {
+        chairPerson = msg.sender;
+        
+    }
+    
 }
