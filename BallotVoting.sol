@@ -23,7 +23,7 @@ contract BallotVoting {
     
     constructor(bytes32[] memory proposalNames) {
         chairPerson = msg.sender;
-        voter[chairPerson].wegith = 1;
+        voters[chairPerson].weight = 1;
 
         for(uint i=0; i< proposalNames.length; i++) {
             proposals.push(Proposal({
@@ -36,5 +36,7 @@ contract BallotVoting {
     function giveRightToVote(address voter) external {
         require(msg.sender == chairPerson, "Only chairperson has the right to vote");
         require(!voters[voter].voted, "The voter has already voted");
-    
+        require(voters[voter].weight == 0);
+        voters[voter].weight = 1;
+    }
 }
