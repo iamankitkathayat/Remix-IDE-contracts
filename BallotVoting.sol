@@ -33,4 +33,8 @@ contract BallotVoting {
         }
     }
     
+    function giveRightToVote(address voter) external {
+        require(msg.sender == chairPerson, "Only chairperson has the right to vote");
+        require(!voters[voter].voted, "The voter has already voted");
+    
 }
