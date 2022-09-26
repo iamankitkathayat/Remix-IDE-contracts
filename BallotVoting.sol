@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.6.0;
 
-contract Ballot {
+contract BallotVoting {
     struct Voter {
         uint weight;
         bool voted;
