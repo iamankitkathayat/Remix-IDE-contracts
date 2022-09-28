@@ -39,4 +39,9 @@ contract BallotVoting {
         require(voters[voter].weight == 0);
         voters[voter].weight = 1;
     }
+    
+    function delegate (address to) external {
+        Voter storage sender = voters[msg.sender];
+        require(sender.weight != 0, "You do not have a right to vote");
+        require(!sender.voted, "You have already voted");
 }
