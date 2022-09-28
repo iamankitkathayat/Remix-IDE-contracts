@@ -49,5 +49,12 @@ contract BallotVoting {
             to = voters[to].delegate;
             require(to != msg.sender, "Found loop in delegation.");
         }
-        
+        Voter storage delegate_ = voters[to];
+
+        require(delegate_.weight >= 1);
+
+        sender.voted = true;
+        sender.delegate = to;
+
+        if (delegate_.voted) {
 }
