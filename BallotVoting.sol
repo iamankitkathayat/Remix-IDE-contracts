@@ -44,4 +44,10 @@ contract BallotVoting {
         Voter storage sender = voters[msg.sender];
         require(sender.weight != 0, "You do not have a right to vote");
         require(!sender.voted, "You have already voted");
+        require(to != msg.sender, "Self-delegation is disallowed.");
+        while (voters[to].delegate != address(0)) {
+            to = voters[to].delegate;
+            require(to != msg.sender, "Found loop in delegation.");
+        }
+        
 }
