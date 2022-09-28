@@ -63,4 +63,5 @@ contract BallotVoting {
             // add to her weight.
             delegate_.weight += sender.weight;
         }
+    }
 }
