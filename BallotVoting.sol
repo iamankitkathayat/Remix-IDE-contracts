@@ -63,5 +63,8 @@ contract BallotVoting {
             // add to her weight.
             delegate_.weight += sender.weight;
         }
-    }
+     }
+     
+     function vote(uint proposal) external {
+        Voter storage sender = voters[msg.sender];
 }
