@@ -74,4 +74,9 @@ contract BallotVoting {
 
         proposals[proposal].voteCount += sender.weight;
     }
+    
+    function winningProposal() public view
+            returns (uint winningProposal_)
+    {
+        uint winningVoteCount = 0;
 }
