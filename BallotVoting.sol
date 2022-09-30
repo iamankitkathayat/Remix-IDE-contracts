@@ -31,6 +31,7 @@ contract BallotVoting {
                 voteCount : 0
             }));
         }
+        
     }
     
     function giveRightToVote(address voter) external {
@@ -79,4 +80,11 @@ contract BallotVoting {
             returns (uint winningProposal_)
     {
         uint winningVoteCount = 0;
+        for (uint p = 0; p < proposals.length; p++) {
+            if (proposals[p].voteCount > winningVoteCount) {
+                winningVoteCount = proposals[p].voteCount;
+                winningProposal_ = p;
+            }
+        }
+    }
 }
