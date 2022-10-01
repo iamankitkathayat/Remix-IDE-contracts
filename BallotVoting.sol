@@ -31,7 +31,6 @@ contract BallotVoting {
                 voteCount : 0
             }));
         }
-        
     }
     
     function giveRightToVote(address voter) external {
@@ -40,7 +39,7 @@ contract BallotVoting {
         require(voters[voter].weight == 0);
         voters[voter].weight = 1;
     }
-    
+
     function delegate (address to) external {
         Voter storage sender = voters[msg.sender];
         require(sender.weight != 0, "You do not have a right to vote");
@@ -64,9 +63,9 @@ contract BallotVoting {
             // add to her weight.
             delegate_.weight += sender.weight;
         }
-     }
-     
-     function vote(uint proposal) external {
+    }
+    
+        function vote(uint proposal) external {
         Voter storage sender = voters[msg.sender];
         require(sender.weight != 0, "Has no right to vote");
         require(!sender.voted, "Already voted.");
@@ -74,8 +73,10 @@ contract BallotVoting {
         sender.vote = proposal;
 
         proposals[proposal].voteCount += sender.weight;
-    }
     
+
+    }    
+
     function winningProposal() public view
             returns (uint winningProposal_)
     {
@@ -86,7 +87,8 @@ contract BallotVoting {
                 winningProposal_ = p;
             }
         }
-    
+    }
+
     function winnerName() external view
             returns (bytes32 winnerName_)
     {
