@@ -51,4 +51,7 @@ contract SimpleAuction {
         highestBid = msg.value;
         emit HighestBidIncreased(msg.sender, msg.value);
     }
+    
+    function withdraw() external returns (bool) {
+        uint amount = pendingReturns[msg.sender];
 }
