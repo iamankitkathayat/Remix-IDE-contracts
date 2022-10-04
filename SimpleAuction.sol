@@ -72,5 +72,20 @@ contract SimpleAuction {
         return true;
     }
     
+    function auctionEnd() external {
+        // 1. Conditions
+        if (block.timestamp < auctionEndTime)
+            revert AuctionNotYetEnded();
+        if (ended)
+            revert AuctionEndAlreadyCalled();
+
+        // 2. Effects
+        ended = true;
+        emit AuctionEnded(highestBidder, highestBid);
+
+        // 3. Interaction
+        beneficiary.transfer(highestBid);
+    }
+    
     
 }
