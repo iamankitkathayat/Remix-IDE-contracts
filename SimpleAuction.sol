@@ -87,5 +87,4 @@ contract SimpleAuction {
         beneficiary.transfer(highestBid);
     }
     
-    
 }
