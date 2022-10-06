@@ -73,7 +73,6 @@ contract BallotVoting {
         sender.vote = proposal;
 
         proposals[proposal].voteCount += sender.weight;
-    
 
     }    
 
