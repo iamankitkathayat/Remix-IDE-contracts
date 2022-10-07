@@ -46,5 +46,17 @@ contract BlindAuction {
         biddingEnd = block.timestamp + biddingTime;
         revealEnd = biddingEnd + revealTime;
     }
+    
+    
+    function bid(bytes32 blindedBid)
+        external
+        payable
+        onlyBefore(biddingEnd)
+    {
+        bids[msg.sender].push(Bid({
+            blindedBid: blindedBid,
+            deposit: msg.value
+        }));
+    }
 
 }
