@@ -47,7 +47,15 @@ contract BlindAuction {
         revealEnd = biddingEnd + revealTime;
     }
     
-    
+    /// Place a blinded bid with `blindedBid` =
+    /// keccak256(abi.encodePacked(value, fake, secret)).
+    /// The sent ether is only refunded if the bid is correctly
+    /// revealed in the revealing phase. The bid is valid if the
+    /// ether sent together with the bid is at least "value" and
+    /// "fake" is not true. Setting "fake" to true and sending
+    /// not the exact amount are ways to hide the real bid but
+    /// still make the required deposit. The same address can
+    /// place multiple bids.
     function bid(bytes32 blindedBid)
         external
         payable
