@@ -85,7 +85,16 @@ contract BlindAuction {
         require(secrets.length == length);
 
         uint refund;
-    
+        external
+        onlyAfter(biddingEnd)
+        onlyBefore(revealEnd)
+    {
+        uint length = bids[msg.sender].length;
+        require(values.length == length);
+        require(fakes.length == length);
+        require(secrets.length == length);
+
+        uint refund;
     
     
 }
