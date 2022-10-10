@@ -95,6 +95,16 @@ contract BlindAuction {
         require(secrets.length == length);
 
         uint refund;
-    
+        refund += bidToCheck.deposit;
+            if (!fake && bidToCheck.deposit >= value) {
+                if (placeBid(msg.sender, value))
+                    refund -= value;
+            }
+            // Make it impossible for the sender to re-claim
+            // the same deposit.
+            bidToCheck.blindedBid = bytes32(0);
+        }
+        payable(msg.sender).transfer(refund);
+    }
     
 }
