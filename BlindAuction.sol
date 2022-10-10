@@ -75,6 +75,17 @@ contract BlindAuction {
         bool[] calldata fakes,
         bytes32[] calldata secrets
     )
+    external
+        onlyAfter(biddingEnd)
+        onlyBefore(revealEnd)
+    {
+        uint length = bids[msg.sender].length;
+        require(values.length == length);
+        require(fakes.length == length);
+        require(secrets.length == length);
+
+        uint refund;
+    
     
     
 }
