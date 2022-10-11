@@ -107,4 +107,16 @@ contract BlindAuction {
         payable(msg.sender).transfer(refund);
     }
     
+    /// End the auction and send the highest bid
+    /// to the beneficiary.
+    function auctionEnd()
+        external
+        onlyAfter(revealEnd)
+    {
+        if (ended) revert AuctionEndAlreadyCalled();
+        emit AuctionEnded(highestBidder, highestBid);
+        ended = true;
+        beneficiary.transfer(highestBid);
+    }
+    
 }
