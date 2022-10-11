@@ -119,4 +119,7 @@ contract BlindAuction {
         beneficiary.transfer(highestBid);
     }
     
+    // This is an "internal" function which means that it
+    // can only be called from the contract itself (or from
+    // derived contracts).
 }
