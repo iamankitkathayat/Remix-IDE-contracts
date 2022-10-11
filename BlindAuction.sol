@@ -122,4 +122,20 @@ contract BlindAuction {
     // This is an "internal" function which means that it
     // can only be called from the contract itself (or from
     // derived contracts).
+    function placeBid(address bidder, uint value) internal
+            returns (bool success)
+    {
+        if (value <= highestBid) {
+            return false;
+        }
+        if (highestBidder != address(0)) {
+            // Refund the previously highest bidder.
+            pendingReturns[highestBidder] += highestBid;
+        }
+        highestBid = value;
+        highestBidder = bidder;
+        return true;
+    }
+    
+    
 }
