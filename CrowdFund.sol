@@ -10,3 +10,12 @@ interface IERC20 {
         uint
     ) external returns (bool);
 }
+
+contract CrowdFund {
+    event Launch(
+        uint id,
+        address indexed creator,
+        uint goal,
+        uint32 startAt,
+        uint32 endAt
+    );
