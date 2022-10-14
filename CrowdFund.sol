@@ -41,4 +41,8 @@ contract CrowdFund {
         bool claimed;
     }
     
+    constructor(address _token) {
+        token = IERC20(_token);
+    }
+    
 }
