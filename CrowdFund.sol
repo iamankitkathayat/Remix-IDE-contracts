@@ -118,4 +118,6 @@ contract CrowdFund {
         require(campaign.pledged < campaign.goal, "pledged >= goal");
 
         uint bal = pledgedAmount[_id][msg.sender];
+        pledgedAmount[_id][msg.sender] = 0;
+        
 }
