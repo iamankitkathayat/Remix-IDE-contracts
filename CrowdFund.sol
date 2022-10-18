@@ -112,5 +112,6 @@ contract CrowdFund {
         emit Claim(_id);
     }
     
-    
+    function refund(uint _id) external {
+        Campaign memory campaign = campaigns[_id];
 }
