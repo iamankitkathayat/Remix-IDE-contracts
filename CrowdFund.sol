@@ -120,4 +120,8 @@ contract CrowdFund {
         uint bal = pledgedAmount[_id][msg.sender];
         pledgedAmount[_id][msg.sender] = 0;
         token.transfer(msg.sender, bal);
+
+        emit Refund(_id, msg.sender, bal);
+    }
+    
 }
