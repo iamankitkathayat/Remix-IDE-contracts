@@ -107,4 +107,10 @@ contract CrowdFund {
         require(!campaign.claimed, "claimed");
 
         campaign.claimed = true;
+        token.transfer(campaign.creator, campaign.pledged);
+
+        emit Claim(_id);
+    }
+    
+    
 }
